@@ -174,3 +174,9 @@ resetname.addEventListener("click",function(){
     playerXInput.value = "";
     playerOInput.value = "";
 })
+
+// Toggle theme
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode')
+    console.log("hihi")
+}
