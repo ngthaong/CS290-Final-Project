@@ -94,9 +94,15 @@ function checkWinner(){
                     headers: {
                       "Content-Type": "application/json"
                     }
-                  })
-                    // Reload the page after the fetch is successful
-                    
+                  }).then(response => {
+                    if (response.ok) {
+                        console.log("Score added successfully!");
+                        // After POST, call fetch to get updated data
+                        return fetch("/leaderboard");
+                    } else {
+                        throw new Error("Failed to add score.");
+                    }
+                })
                 
                 
             
@@ -109,16 +115,20 @@ function checkWinner(){
                 fetch(url, {
                     method: "POST",
                     body: JSON.stringify({
-                      name: playersarray[index][0],
-                      wins: playersarray[index][1]
+                        name: playersarray[index][0],
+                        wins: playersarray[index][1]
                     }),
                     headers: {
-                      "Content-Type": "application/json"
+                        "Content-Type": "application/json"
                     }
-                  }).then(() => {
-                    // Reload the page after the fetch is successful
-                    
-                });
+                }).then(function (res) {
+                    var leaderboardTemplate = Handlebars.templates.leaderboard
+                    var leaderboardupdate = leaderboardTemplate({
+                        name: playersarray[index][0],
+                        wins: playersarray[index][1]
+                    }) 
+                }
+            )
 
         running = false;
     }}

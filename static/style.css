@@ -1,5 +1,6 @@
 :root{
-    --winnerboxes :green 
+    --winnerboxes : lightblue 
+    
 }
 
 .cell{
@@ -10,6 +11,7 @@
     border-bottom: 2px solid;
     border-right: 2px solid;
     cursor: pointer;
+    font-family: cursive;
 }
 .cell:nth-child(3n) {
     border-right: none;
